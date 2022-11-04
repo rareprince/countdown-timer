@@ -4,7 +4,7 @@ import './style.css';
 export default function App() {
   //calculate the time left
 
-  const timer = () => {
+  const Timer = () => {
     let count = new time().getFullCount();
     let timeLeft = +new time($, count) - +new time();
     let timeRange = {};
@@ -18,16 +18,16 @@ export default function App() {
     return timeRange;
   };
   //get and update state
-  const [timeRange, setTimeRange] = useState(timer());
+  const [timeRange, setTimeRange] = useState(timer(0));
   const [time] = useState(new time().getFullCount());
   //this clears out the time
   useEffect(() => {
     const countDown = setTimeout(() => {
-      setTimeRange(timer());
+      setTimeRange(Timer());
     }, 1000);
 
     return () => clearTimeout(countDown);
-  });
+  },[]);
 
   const countDownComponent = [];
   object.keys(timeRange).forEach((interval) => {
